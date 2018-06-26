@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Form extends Component {
     state = {
         isFurnished : false,
-        city : "",
+        city : "Paris",
         maxPrice : 500000,
     };
 
@@ -11,6 +11,13 @@ export default class Form extends Component {
         const {maxPrice} = this.state;
         this.setState({
             maxPrice : event.target.value
+        });
+    }
+    
+    setCity(event){
+        const {city} = this.state;
+        this.setState({
+            city : event.target.value
         });
     }
 
@@ -21,6 +28,11 @@ export default class Form extends Component {
         });
     }
 
+    setList(){
+        const {isFurnished, maxPrice, city} = this.state;
+        alert("isFurnished :" + isFurnished + "; maxPrice : " + maxPrice + "; city : " + city);
+    }
+
     render() {
         const {maxPrice} = this.state;
         return (
@@ -28,7 +40,7 @@ export default class Form extends Component {
                 <div className="form-container">
                     <form>
                     <p>Plus de critères</p>
-                        <select>
+                        <select onChange={this.setCity.bind(this)}>
                             <option value="Paris">Paris</option>
                             <option value="Lille">Lille</option>
                             <option value="Lyon">Lyon</option>
@@ -39,6 +51,7 @@ export default class Form extends Component {
                         <input type="checkbox" id="checkFurnished" onChange={this.toggleFurnished.bind(this)}/>
                         <label for="setMax">Prix max : {maxPrice}</label>
                         <input type="range" max="5000000" min="500000" step="100000" id="setMax" onChange={this.setPrice.bind(this)}/>
+                        <input type="button" onClick={this.setList.bind(this)} value="Go"/>
                     </form>
                 </div>
             </div>

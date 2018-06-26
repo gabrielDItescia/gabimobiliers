@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Form from "./components/form/form";
+import List from "./components/list/list";
 
 export default class App extends Component {
   render() {
@@ -27,7 +28,8 @@ export default class App extends Component {
           <h1 className="App-title">Bienvenue sur GabImmobilier !</h1>
         </header>
         <p className="App-intro">
-          <Form />
+          <Form/>
+          <List/>
         </p>
       </div>
     );
